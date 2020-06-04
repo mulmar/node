@@ -1,0 +1,33 @@
+{
+  "name": "nodefiles",
+  "version": "12.13.0",
+  "description": "simple web app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -r esm serverFD.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mulmar/node.git"
+  },
+  "author": "Martin Mulder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mulmar/node/issues"
+  },
+  "homepage": "https://github.com/mulmar/node#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.0.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "knex": "^0.21.1",
+    "pg": "^8.2.1"
+  }
+}
