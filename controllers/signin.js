@@ -1,4 +1,7 @@
 const handleSignin = (req, res, bcrypt, db)=> {
+	if (!req.body.email || !req.body.password) {
+		return res.status(400).json('form contains empty field(s)')
+	}
 	db.select('email','hash').from('login')
 	.where('email','=', req.body.email)
 	.then(data => {
