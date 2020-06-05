@@ -1,6 +1,24 @@
 const Clarifai = require('clarifai');
+require('dotenv').config()
 
-const app = new Clarifai.App({apiKey: '5a3cc156bb2047a3966fbd3bf93e6616'});
+const app = new Clarifai.App({apiKey: process.env.API_KEY});
+
+const handleApi = (req,res) => {
+	app.models.predict(Clarifai.GENERAL_MODEL,req.body.input)
+	.then(data => {
+		res.json(data)
+	})
+	.catch(err => res.status(123).json('niet goed'))
+}
+
+
+const handleApiFace = (req,res) => {
+	app.models.predict(Clarifai.FACE_DETECT_MODEL,req.body.input)
+	.then(data => {
+		res.json(data)
+	})
+	.catch(err => res.status(123).json('niet goed'))
+}
 
 const handleImage = (req,res, db)=>{
 	const { id } = req.body;
@@ -14,5 +32,7 @@ const handleImage = (req,res, db)=>{
 }
 
 module.exports = {
-    handleImage: handleImage
+	handleImage: handleImage,
+	handleApi: handleApi,
+	handleApiFace: handleApiFace
 };

@@ -34,6 +34,9 @@ app.put('/image', (req, res) => {image.handleImage(req, res, db)})
 app.post('/signin', (req, res) => {signin.handleSignin(req, res, bcrypt, db)})
 app.post('/register', (req, res) => {register.handleRegister(req, res, bcrypt, db)})
 
+app.post('/imageurl', (req, res) => {image.handleApi(req, res, db)})
+app.post('/imageurlface', (req, res) => {image.handleApiFace(req, res, db)})
+
 app.listen(3000, ()=>{
 	console.log('Server listening on Port 3000...');
 })
