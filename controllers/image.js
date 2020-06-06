@@ -11,10 +11,8 @@ const handleImageApi = (req,res) => {
 	.then(data => {
 		res.json(data)
 	})
-	.catch(err => res.status(123).json('niet goed'))
+	.catch(err => res.status(123).json('error in API call to clarifai'))
 }
-
-
 
 const handleImageCount = (req,res, db)=>{
 	const { id } = req.body;
