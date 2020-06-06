@@ -1,17 +1,19 @@
-const express = require ('express');
-const bcrypt = require ( 'bcryptjs');
-const cors = require ( 'cors');
-const knex = require ( 'knex');
-const register = require ( './controllers/register');
-const profile  = require ('./controllers/profile');
-const signin  = require ('./controllers/signin');
-const image = require ('./controllers/image');
+import express from 'express';
+import bcrypt from 'bcryptjs';
+import cors from 'cors';
+import knex from 'knex';
+import register from './controllers/register';
+import profile  from'./controllers/profile';
+import signin  from'./controllers/signin';
+import image from'./controllers/image';
 
 const db = knex ({
 	client: 'pg',
 	connection: {
-	  connectionString : process.env.DATABASE_URL,
-	  ssl : true
+	  host : '127.0.0.1',
+	  user : 'postgres',
+	  password : '0264',
+	  database : 'smartbrain'
 	}
   });
 
@@ -21,11 +23,10 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req, res)=> {
-//	db.select('*').from('users')
-//	.then(users => {
-//			res.status(200).json(users)
-//	})
-res.send('its working!')
+	db.select('*').from('users')
+	.then(users => {
+			res.status(200).json(users)
+	})
 });	
 
 app.get('/profile/:id', (req, res) => {profile.handleProfileGet(req, res, db)})
