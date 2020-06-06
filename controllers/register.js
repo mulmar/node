@@ -32,6 +32,6 @@ const handleRegister = (req, res, bcrypt, db)=> {
 	});		
 }
 
-export default  {
+module.exports = {
     handleRegister: handleRegister
 };
