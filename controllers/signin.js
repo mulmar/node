@@ -20,6 +20,6 @@ const handleSignin = (req, res, bcrypt, db)=> {
 	.catch(err => res.status(404).json('cannot login'))
 }
 
-export default  {
+module.exports = {
     handleSignin: handleSignin
 };
