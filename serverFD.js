@@ -35,6 +35,7 @@ app.post('/signin', (req, res) => {signin.handleSignin(req, res, bcrypt, db)})
 app.post('/register', (req, res) => {register.handleRegister(req, res, bcrypt, db)})
 app.post('/imageurl', (req, res) => {image.handleImageApi(req, res)})
 
-app.listen(3000, ()=>{
-	console.log('Server listening on Port 3000...');
+app.listen(process.env.PORT || 3000, ()=>{
+	if (process.env.PORT) {console.log(`Server listening on Port ${process.env.PORT}`);}
+	else {console.log(`Server listening on Port 3000`);}
 })
