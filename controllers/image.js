@@ -1,5 +1,7 @@
-const Clarifai = require('clarifai');
-require('dotenv').config()
+import Clarifai from 'clarifai';
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const app = new Clarifai.App({apiKey: process.env.API_KEY});
 
@@ -25,7 +27,7 @@ const handleImageCount = (req,res, db)=>{
 	.catch(err => res.status(400).json('cannot update entries'))
 }
 
-module.exports = {
+export default{
 	handleImageCount: handleImageCount,
 	handleImageApi: handleImageApi
 };

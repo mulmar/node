@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon serverFD.js"
+    "start": "nodemon -r esm serverFD.js",
+    "start:dev": "nodemon serverFD.js"
   },
   "repository": {
     "type": "git",
