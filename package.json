@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node -r esm serverFD.js",
-    "start:dev": "nodemon serverFD.js"
+    "start:dev": "node serverFD.js"
   },
   "repository": {
     "type": "git",
