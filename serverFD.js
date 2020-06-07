@@ -7,15 +7,37 @@ const profile  = require ('./controllers/profile');
 const signin  = require ('./controllers/signin');
 const image = require ('./controllers/image');
 
-const db = knex ({
-	client: 'pg',
-	connection: {
-	  host : '127.0.0.1',
-	  user : 'postgres',
-	  password : '0264',
-	  database : 'smartbrain'
+let db
+
+if (!process.env.DATABASE_URL){
+	//local database
+	db = knex ({
+		client: 'pg',
+		connection: {
+		  host : '127.0.0.1',
+		  user : 'postgres',
+		  password : '',
+		  database : 'smartbrain'
+		}
+	  });
 	}
-  });
+
+
+
+else {
+ 	process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
+	// database on Heroku
+	db = knex ({
+		client: 'pg',
+		connection: {
+			connectionString : process.env.DATABASE_URL,
+			ssl : true
+		}
+	  }); 
+
+	}
+
+
 
 const app = express();
 
